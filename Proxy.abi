@@ -1,0 +1,54 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_chainName",
+				"type": "string"
+			}
+		],
+		"name": "getBridgeNodeWithChainName",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "chainName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "ip",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_id",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_chainName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_ip",
+				"type": "string"
+			}
+		],
+		"name": "setBridgeNode",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]
