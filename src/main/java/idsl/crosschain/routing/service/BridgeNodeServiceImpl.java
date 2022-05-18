@@ -5,9 +5,7 @@ import idsl.crosschain.routing.model.BridgeNode;
 import idsl.crosschain.routing.model.QuorumInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.web3j.tuples.generated.Tuple3;
 
@@ -15,12 +13,12 @@ import org.web3j.tuples.generated.Tuple3;
 @Service
 public class BridgeNodeServiceImpl implements BridgeNodeService {
 
-    private final String PROXY_CONTRACT_ADDRESS = "0x9f1d86054106F5799fDD684D29D3f9A5f737463d";
+    private final String PROXY_CONTRACT_ADDRESS = "0x8eb932851a340ede1158c960f5a2a04fd3c2babc";
 
     @Autowired
     private ApplicationContext applicationContext;
 
-    public BridgeNodeServiceImpl () {
+    public BridgeNodeServiceImpl() {
     }
 
     @Override
@@ -57,7 +55,7 @@ public class BridgeNodeServiceImpl implements BridgeNodeService {
             log.info("loaded contract address: " + proxy.getContractAddress());
 
             Tuple3<String, String, String> nodeInfo = proxy.getBridgeNodeWithChainName(chainName).send();
-            System.out.println(nodeInfo);
+            log.debug("bridge node info: {}, {}, {}", nodeInfo.component1(), nodeInfo.component2(), nodeInfo.component3());
             bridgeNode.setId(nodeInfo.component1());
             bridgeNode.setChainName(nodeInfo.component2());
             bridgeNode.setIp(nodeInfo.component3());

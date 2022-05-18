@@ -1,21 +1,19 @@
 package idsl.crosschain.routing;
 
-import idsl.crosschain.routing.contract.Proxy;
 import idsl.crosschain.routing.model.QuorumInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Properties;
 
 @Slf4j
-@SpringBootApplication
+//@SpringBootApplication
+@SpringBootApplication(exclude = KafkaAutoConfiguration.class)
 public class RoutingApplication implements CommandLineRunner {
 
     @Autowired
@@ -34,8 +32,8 @@ public class RoutingApplication implements CommandLineRunner {
             QuorumInfo quorumInfo = (QuorumInfo) applicationContext.getBean("quorumBuilder");
 
             // deploy contract
-            Proxy proxy = Proxy.deploy(quorumInfo.getQuorum(), quorumInfo.getCredentials(), quorumInfo.getGasProvider()).send();
-            log.info("[{}] deployed contract address: {}", LocalDateTime.now().format(dateTimeFormatter), proxy.getContractAddress());
+//            Proxy proxy = Proxy.deploy(quorumInfo.getQuorum(), quorumInfo.getCredentials(), quorumInfo.getGasProvider()).send();
+//            log.info("[{}] deployed contract address: {}", LocalDateTime.now().format(dateTimeFormatter), proxy.getContractAddress());
 
             // block listen
 //            EthFilter filter = new EthFilter(DefaultBlockParameterName.EARLIEST, DefaultBlockParameterName.LATEST, "0x9868831d5c4154b70cc2713a9fbd1b59dda7e3bb");

@@ -1,7 +1,6 @@
 package idsl.crosschain.routing.controller;
 
 import idsl.crosschain.routing.model.BridgeNode;
-import idsl.crosschain.routing.model.RoutingInfo;
 import idsl.crosschain.routing.service.BridgeNodeService;
 import idsl.crosschain.routing.service.RoutingService;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +24,7 @@ public class BridgeNodeController {
     @Autowired
     private RestTemplate restTemplate;
 
-    public BridgeNodeController () {
+    public BridgeNodeController() {
 
     }
 

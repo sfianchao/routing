@@ -2,12 +2,6 @@ package idsl.crosschain.routing.contract;
 
 import io.reactivex.Flowable;
 import io.reactivex.functions.Function;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.Callable;
 import org.web3j.abi.EventEncoder;
 import org.web3j.abi.TypeReference;
 import org.web3j.abi.datatypes.DynamicStruct;
@@ -28,11 +22,18 @@ import org.web3j.tx.Contract;
 import org.web3j.tx.TransactionManager;
 import org.web3j.tx.gas.ContractGasProvider;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.Callable;
+
 /**
  * <p>Auto generated code.
  * <p><strong>Do not modify!</strong>
  * <p>Please use the <a href="https://docs.web3j.io/command_line.html">web3j command line tools</a>,
- * or the org.web3j.codegen.SolidityFunctionWrapperGenerator in the 
+ * or the org.web3j.codegen.SolidityFunctionWrapperGenerator in the
  * <a href="https://github.com/web3j/web3j/tree/master/codegen">codegen module</a> to update.
  *
  * <p>Generated with web3j version 1.4.1.
@@ -47,8 +48,12 @@ public class Proxy extends Contract {
 
     public static final String FUNC_SETBRIDGENODE = "setBridgeNode";
 
-    public static final Event REGISTERBRIDGENODE_EVENT = new Event("registerBridgeNode", 
-            Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}));
+    public static final Event REGISTERBRIDGENODE_EVENT = new Event("registerBridgeNode",
+            Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {
+            }, new TypeReference<Utf8String>() {
+            }, new TypeReference<Utf8String>() {
+            }, new TypeReference<Utf8String>() {
+            }));
     ;
 
     @Deprecated
@@ -107,34 +112,40 @@ public class Proxy extends Contract {
     }
 
     public RemoteFunctionCall<Tuple3<String, String, String>> bridgeNodeList(BigInteger param0) {
-        final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_BRIDGENODELIST, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(param0)), 
-                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}));
+        final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_BRIDGENODELIST,
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(param0)),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {
+                }, new TypeReference<Utf8String>() {
+                }, new TypeReference<Utf8String>() {
+                }));
         return new RemoteFunctionCall<Tuple3<String, String, String>>(function,
                 new Callable<Tuple3<String, String, String>>() {
                     @Override
                     public Tuple3<String, String, String> call() throws Exception {
                         List<Type> results = executeCallMultipleValueReturn(function);
                         return new Tuple3<String, String, String>(
-                                (String) results.get(0).getValue(), 
-                                (String) results.get(1).getValue(), 
+                                (String) results.get(0).getValue(),
+                                (String) results.get(1).getValue(),
                                 (String) results.get(2).getValue());
                     }
                 });
     }
 
     public RemoteFunctionCall<Tuple3<String, String, String>> getBridgeNodeWithChainName(String _chainName) {
-        final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETBRIDGENODEWITHCHAINNAME, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(_chainName)), 
-                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}, new TypeReference<Utf8String>() {}));
+        final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETBRIDGENODEWITHCHAINNAME,
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(_chainName)),
+                Arrays.<TypeReference<?>>asList(new TypeReference<Utf8String>() {
+                }, new TypeReference<Utf8String>() {
+                }, new TypeReference<Utf8String>() {
+                }));
         return new RemoteFunctionCall<Tuple3<String, String, String>>(function,
                 new Callable<Tuple3<String, String, String>>() {
                     @Override
                     public Tuple3<String, String, String> call() throws Exception {
                         List<Type> results = executeCallMultipleValueReturn(function);
                         return new Tuple3<String, String, String>(
-                                (String) results.get(0).getValue(), 
-                                (String) results.get(1).getValue(), 
+                                (String) results.get(0).getValue(),
+                                (String) results.get(1).getValue(),
                                 (String) results.get(2).getValue());
                     }
                 });
@@ -142,10 +153,10 @@ public class Proxy extends Contract {
 
     public RemoteFunctionCall<TransactionReceipt> setBridgeNode(String _id, String _chainName, String _ip) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
-                FUNC_SETBRIDGENODE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(_id), 
-                new org.web3j.abi.datatypes.Utf8String(_chainName), 
-                new org.web3j.abi.datatypes.Utf8String(_ip)), 
+                FUNC_SETBRIDGENODE,
+                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(_id),
+                        new org.web3j.abi.datatypes.Utf8String(_chainName),
+                        new org.web3j.abi.datatypes.Utf8String(_ip)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -194,14 +205,14 @@ public class Proxy extends Contract {
         public String ip;
 
         public bridgeNode(String id, String chainName, String ip) {
-            super(new org.web3j.abi.datatypes.Utf8String(id),new org.web3j.abi.datatypes.Utf8String(chainName),new org.web3j.abi.datatypes.Utf8String(ip));
+            super(new org.web3j.abi.datatypes.Utf8String(id), new org.web3j.abi.datatypes.Utf8String(chainName), new org.web3j.abi.datatypes.Utf8String(ip));
             this.id = id;
             this.chainName = chainName;
             this.ip = ip;
         }
 
         public bridgeNode(Utf8String id, Utf8String chainName, Utf8String ip) {
-            super(id,chainName,ip);
+            super(id, chainName, ip);
             this.id = id.getValue();
             this.chainName = chainName.getValue();
             this.ip = ip.getValue();

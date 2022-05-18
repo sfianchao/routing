@@ -4,7 +4,6 @@ import idsl.crosschain.routing.model.QuorumInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.core.methods.response.Web3ClientVersion;
 import org.web3j.protocol.http.HttpService;
@@ -18,7 +17,7 @@ import java.math.BigInteger;
 public class QuorumConfig {
 
     @Bean(name = "quorumBuilder")
-    public QuorumInfo quorumBuilder () {
+    public QuorumInfo quorumBuilder() {
 
         QuorumInfo quorumInfo = new QuorumInfo();
 
