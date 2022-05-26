@@ -1,5 +1,6 @@
 package idsl.crosschain.routing;
 
+import idsl.crosschain.routing.contract.Proxy;
 import idsl.crosschain.routing.model.QuorumInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Slf4j
@@ -29,7 +31,7 @@ public class RoutingApplication implements CommandLineRunner {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
         try {
-            QuorumInfo quorumInfo = (QuorumInfo) applicationContext.getBean("quorumBuilder");
+            QuorumInfo quorumInfo = (QuorumInfo) applicationContext.getBean("relayChainBuilder");
 
             // deploy contract
 //            Proxy proxy = Proxy.deploy(quorumInfo.getQuorum(), quorumInfo.getCredentials(), quorumInfo.getGasProvider()).send();

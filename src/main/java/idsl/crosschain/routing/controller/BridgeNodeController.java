@@ -33,8 +33,8 @@ public class BridgeNodeController {
         return new ResponseEntity<>(bridgeNodeService.setBridgeNode(bridgeNode), HttpStatus.CREATED);
     }
 
-    @GetMapping("/get")
-    public ResponseEntity<?> getBridgeNode(@RequestParam String chainName) {
+    @GetMapping("/get/{chainName}")
+    public ResponseEntity<?> getBridgeNode(@PathVariable String chainName) {
         return new ResponseEntity<>(bridgeNodeService.getBridgeNode(chainName), HttpStatus.OK);
     }
 

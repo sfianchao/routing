@@ -5,6 +5,7 @@ import idsl.crosschain.routing.model.BridgeNode;
 import idsl.crosschain.routing.model.QuorumInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.web3j.tuples.generated.Tuple3;
@@ -13,7 +14,8 @@ import org.web3j.tuples.generated.Tuple3;
 @Service
 public class BridgeNodeServiceImpl implements BridgeNodeService {
 
-    private final String PROXY_CONTRACT_ADDRESS = "0x8eb932851a340ede1158c960f5a2a04fd3c2babc";
+    @Value("${contract.address.relay}")
+    private String PROXY_CONTRACT_ADDRESS;
 
     @Autowired
     private ApplicationContext applicationContext;
@@ -25,7 +27,7 @@ public class BridgeNodeServiceImpl implements BridgeNodeService {
     public String setBridgeNode(BridgeNode bridgeNode) {
 
         try {
-            QuorumInfo quorumInfo = (QuorumInfo) applicationContext.getBean("quorumBuilder");
+            QuorumInfo quorumInfo = (QuorumInfo) applicationContext.getBean("relayChainBuilder");
 
             // load contract
             Proxy proxy = Proxy.load(PROXY_CONTRACT_ADDRESS,
@@ -47,7 +49,7 @@ public class BridgeNodeServiceImpl implements BridgeNodeService {
         BridgeNode bridgeNode = new BridgeNode();
 
         try {
-            QuorumInfo quorumInfo = (QuorumInfo) applicationContext.getBean("quorumBuilder");
+            QuorumInfo quorumInfo = (QuorumInfo) applicationContext.getBean("relayChainBuilder");
 
             // load contract
             Proxy proxy = Proxy.load(PROXY_CONTRACT_ADDRESS,
