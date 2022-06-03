@@ -3,6 +3,7 @@ package idsl.crosschain.routing.service;
 import idsl.crosschain.routing.contract.Proxy;
 import idsl.crosschain.routing.model.BridgeNode;
 import idsl.crosschain.routing.model.QuorumInfo;
+import idsl.crosschain.routing.model.RoutingInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +27,8 @@ public class BridgeNodeServiceImpl implements BridgeNodeService {
     @Override
     public String setBridgeNode(BridgeNode bridgeNode) {
 
+        RoutingInfo routingInfo = new RoutingInfo();
+
         try {
             QuorumInfo quorumInfo = (QuorumInfo) applicationContext.getBean("relayChainBuilder");
 
@@ -34,7 +37,7 @@ public class BridgeNodeServiceImpl implements BridgeNodeService {
                     quorumInfo.getQuorum(), quorumInfo.getCredentials(), quorumInfo.getGasProvider());
             log.info("loaded contract address: " + proxy.getContractAddress());
 
-            proxy.setBridgeNode(bridgeNode.id, bridgeNode.chainName, bridgeNode.ip).send();
+            proxy.setBridgeNode(routingInfo.getId(), routingInfo.getChainName(), routingInfo.getIp()).send();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -44,9 +47,9 @@ public class BridgeNodeServiceImpl implements BridgeNodeService {
     }
 
     @Override
-    public BridgeNode getBridgeNode(String chainName) {
+    public RoutingInfo getBridgeNode(String chainName) {
 
-        BridgeNode bridgeNode = new BridgeNode();
+        RoutingInfo routingInfo = new RoutingInfo();
 
         try {
             QuorumInfo quorumInfo = (QuorumInfo) applicationContext.getBean("relayChainBuilder");
@@ -58,14 +61,14 @@ public class BridgeNodeServiceImpl implements BridgeNodeService {
 
             Tuple3<String, String, String> nodeInfo = proxy.getBridgeNodeWithChainName(chainName).send();
             log.debug("bridge node info: {}, {}, {}", nodeInfo.component1(), nodeInfo.component2(), nodeInfo.component3());
-            bridgeNode.setId(nodeInfo.component1());
-            bridgeNode.setChainName(nodeInfo.component2());
-            bridgeNode.setIp(nodeInfo.component3());
+            routingInfo.setId(nodeInfo.component1());
+            routingInfo.setChainName(nodeInfo.component2());
+            routingInfo.setIp(nodeInfo.component3());
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return bridgeNode;
+        return routingInfo;
     }
 }

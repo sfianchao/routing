@@ -5,6 +5,9 @@ import lombok.Data;
 @Data
 public class RoutingInfo {
 
-    private String ip;
+    public String id;
 
+    public String chainName;
+
+    public String ip;
 }

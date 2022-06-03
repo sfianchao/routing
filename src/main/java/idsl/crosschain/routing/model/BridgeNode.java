@@ -5,9 +5,21 @@ import lombok.Data;
 @Data
 public class BridgeNode {
 
-    public String id;
+    public BridgeNode() {
+    }
 
-    public String chainName;
+    public BridgeNode(String nodeId, String chainName, String ip, String pk) {
+        this.nodeId = nodeId;
+        this.chainName = chainName;
+        this.ip = ip;
+        this.pk = pk;
+    }
 
-    public String ip;
+    private String nodeId;
+
+    private String chainName;
+
+    private String ip;
+
+    private String pk;
 }

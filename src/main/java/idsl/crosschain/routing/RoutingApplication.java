@@ -30,22 +30,6 @@ public class RoutingApplication implements CommandLineRunner {
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
-        try {
-            QuorumInfo quorumInfo = (QuorumInfo) applicationContext.getBean("relayChainBuilder");
-
-            // deploy contract
-//            Proxy proxy = Proxy.deploy(quorumInfo.getQuorum(), quorumInfo.getCredentials(), quorumInfo.getGasProvider()).send();
-//            log.info("[{}] deployed contract address: {}", LocalDateTime.now().format(dateTimeFormatter), proxy.getContractAddress());
-
-            // block listen
-//            EthFilter filter = new EthFilter(DefaultBlockParameterName.EARLIEST, DefaultBlockParameterName.LATEST, "0x9868831d5c4154b70cc2713a9fbd1b59dda7e3bb");
-//            quorum.ethLogFlowable(filter).subscribe(log -> System.out.println("transaction log: " + log.getData()));
-//            proxy.modifiedEventFlowable(filter).subscribe(log -> System.out.println("transaction: " + log.newGreeting));
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
     }
 
 }

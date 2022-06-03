@@ -29,12 +29,6 @@ public class RoutingController {
         return new ResponseEntity<>(routingInfo, HttpStatus.CREATED);
     }
 
-    /**
-     * module 2: request routing information
-     *
-     * @param chainName
-     * @return
-     */
     @GetMapping("/request")
     public ResponseEntity<?> requestRoutingInfo(@RequestParam String chainName) {
         return new ResponseEntity<>(routingService.getRoutingInfo(chainName), HttpStatus.OK);
