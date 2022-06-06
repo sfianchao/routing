@@ -1,7 +1,5 @@
 package idsl.crosschain.routing;
 
-import idsl.crosschain.routing.contract.Proxy;
-import idsl.crosschain.routing.model.QuorumInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Slf4j
