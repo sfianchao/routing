@@ -46,7 +46,7 @@ public class QuorumConfig {
             log.info("[relay] chain client version: " + clientVersion);
 
             // set up credentials
-            Credentials credentials = WalletUtils.loadCredentials("node", new File("C:/Users/hmnic/Documents/GitHub/web3jTest/relay-wallets/wallet2"));
+            Credentials credentials = WalletUtils.loadCredentials("node", new File("C:/Users/hmnic/Documents/GitHub/web3jTest/wallets-relay/wallet1"));
             StaticGasProvider gasProvider = new StaticGasProvider(DefaultGasProvider.GAS_PRICE, DefaultGasProvider.GAS_LIMIT);
             log.info("[relay] chain account address: " + credentials.getAddress());
             log.info("[relay} network version: {}", quorum.netVersion().send().getNetVersion());

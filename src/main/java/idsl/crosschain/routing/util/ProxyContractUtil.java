@@ -10,7 +10,10 @@ import org.springframework.stereotype.Component;
 import org.web3j.tx.ChainId;
 import org.web3j.tx.RawTransactionManager;
 import org.web3j.tx.TransactionManager;
+import org.web3j.tx.gas.DefaultGasProvider;
+import org.web3j.tx.gas.StaticGasProvider;
 
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -33,6 +36,7 @@ public class ProxyContractUtil extends ContractUtil {
         JSONObject jsonObject = new JSONObject();
 
         QuorumInfo quorumInfo = (QuorumInfo) applicationContext.getBean(chainBuilder);
+        quorumInfo.setGasProvider(new StaticGasProvider(BigInteger.ZERO, DefaultGasProvider.GAS_LIMIT));
 
         // deploy contract
         try {
