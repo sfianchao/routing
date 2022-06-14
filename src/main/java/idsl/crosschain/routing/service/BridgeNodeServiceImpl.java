@@ -10,11 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.web3j.tuples.generated.Tuple3;
-import org.web3j.tx.ChainId;
-import org.web3j.tx.RawTransactionManager;
-import org.web3j.tx.TransactionManager;
-
-import java.math.BigInteger;
 
 @Slf4j
 @Service

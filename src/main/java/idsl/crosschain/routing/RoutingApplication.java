@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 
@@ -12,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 
 @Slf4j
 //@SpringBootApplication
-@SpringBootApplication(exclude = KafkaAutoConfiguration.class)
+@SpringBootApplication(exclude = {KafkaAutoConfiguration.class, DataSourceAutoConfiguration.class})
 public class RoutingApplication implements CommandLineRunner {
 
     @Autowired

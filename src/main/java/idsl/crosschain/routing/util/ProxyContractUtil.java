@@ -6,8 +6,8 @@ import idsl.crosschain.routing.model.QuorumInfo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.web3j.tx.ChainId;
 import org.web3j.tx.RawTransactionManager;
 import org.web3j.tx.TransactionManager;
 import org.web3j.tx.gas.DefaultGasProvider;
@@ -41,7 +41,7 @@ public class ProxyContractUtil extends ContractUtil {
         // deploy contract
         try {
             TransactionManager transactionManager = new RawTransactionManager(
-                    quorumInfo.getQuorum(), quorumInfo.getCredentials(), 10);
+                    quorumInfo.getQuorum(), quorumInfo.getCredentials(), chainId);
             Proxy proxy = Proxy.deploy(quorumInfo.getQuorum(), transactionManager, quorumInfo.getGasProvider()).send();
             contractAddress = proxy.getContractAddress();
             log.info("[{}] deployed contract address: {}", chainBuilder, contractAddress);
