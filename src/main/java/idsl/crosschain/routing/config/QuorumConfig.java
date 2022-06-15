@@ -17,6 +17,8 @@ import java.math.BigInteger;
 public class QuorumConfig {
 
     private String idslInternalIp = "http://192.168.66.74:8545";
+    private String idslExternalIp = "http://140.118.9.214:9045";
+    private String masterPlanIp = "http://104.118.9.226:23001";
 
     @Bean(name = "relayChainBuilder")
     public QuorumInfo relayChainBuilder() {
