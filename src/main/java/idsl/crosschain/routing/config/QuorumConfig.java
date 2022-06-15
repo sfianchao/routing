@@ -16,6 +16,8 @@ import java.math.BigInteger;
 @Configuration
 public class QuorumConfig {
 
+    private String idslInternalIp = "http://192.168.66.74:8545";
+
     @Bean(name = "relayChainBuilder")
     public QuorumInfo relayChainBuilder() {
 
@@ -23,7 +25,7 @@ public class QuorumConfig {
 
         try {
             // connect to blockchain
-            Quorum quorum = Quorum.build(new HttpService("http://140.118.9.214:9045"));
+            Quorum quorum = Quorum.build(new HttpService(idslInternalIp));
             Web3ClientVersion web3ClientVersion = quorum.web3ClientVersion().send();
             String clientVersion = web3ClientVersion.getWeb3ClientVersion();
             log.info("[relay] chain client version: " + clientVersion);
