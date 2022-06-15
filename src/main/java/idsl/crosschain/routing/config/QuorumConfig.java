@@ -18,7 +18,7 @@ public class QuorumConfig {
 
     private String idslInternalIp = "http://192.168.66.74:8545";
     private String idslExternalIp = "http://140.118.9.214:9045";
-    private String masterPlanIp = "http://104.118.9.226:23001";
+    private String masterPlanIp = "http://140.118.9.226:23001";
 
     @Bean(name = "relayChainBuilder")
     public QuorumInfo relayChainBuilder() {
@@ -27,7 +27,7 @@ public class QuorumConfig {
 
         try {
             // connect to blockchain
-            Quorum quorum = Quorum.build(new HttpService(idslInternalIp));
+            Quorum quorum = Quorum.build(new HttpService(masterPlanIp));
             Web3ClientVersion web3ClientVersion = quorum.web3ClientVersion().send();
             String clientVersion = web3ClientVersion.getWeb3ClientVersion();
             log.info("[relay] chain client version: " + clientVersion);
